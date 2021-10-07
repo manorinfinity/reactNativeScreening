@@ -15,7 +15,7 @@ const linking: LinkingOptions<RootStackParamList> = {
     screens: {
       Root: {
         screens: {
-          TabOne: {
+          StarShips: {
             screens: {
               TabOneScreen: 'one',
             },
@@ -23,6 +23,11 @@ const linking: LinkingOptions<RootStackParamList> = {
           TabTwo: {
             screens: {
               TabTwoScreen: 'two',
+            },
+          },
+          TabThree: {
+            screens: {
+              TabThreeScreen: 'three',
             },
           },
         },

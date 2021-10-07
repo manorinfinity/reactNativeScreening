@@ -2,15 +2,14 @@ import * as React from 'react';
 import { StyleSheet } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
-import StarShips from '../components/StarShips';
 import { Text, View } from '../components/Themed';
-import { RootTabScreenProps } from '../types';
 
-export default function TabOneScreen({ navigation }: RootTabScreenProps<'StarShips'>) {
+export default function TabThreeScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Starships List</Text>
-      <StarShips path="/screens/TabOneScreen.tsx" />
+      <Text style={styles.title}>Tab Three</Text>
+      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      <EditScreenInfo path="/screens/TabTwoScreen.tsx" />
     </View>
   );
 }
@@ -24,7 +23,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-    marginTop: 25,
   },
   separator: {
     marginVertical: 30,

@@ -1,14 +1,26 @@
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
-
+import { ScrollView } from 'react-native-gesture-handler';
+import { startClock } from 'react-native-reanimated';
 import Colors from '../constants/Colors';
 import { MonoText } from './StyledText';
 import { Text, View } from './Themed';
 
 export default function EditScreenInfo({ path }: { path: string }) {
+  const[starships, setStarships] = useState({
+    data: [],
+  });
+  useEffect(() => {
+    // Fetch List of Starships
+    fetch('https://swapi.dev/api/starships')
+    .then((res) => res.json())
+    .then(data => setStarships({data: data.results}))
+    .catch(err => console.log(err))
+  }, []);
   return (
-    <View>
+    <ScrollView>
       <View style={styles.getStartedContainer}>
         <Text
           style={styles.getStartedText}
@@ -34,18 +46,28 @@ export default function EditScreenInfo({ path }: { path: string }) {
 
       <View style={styles.helpContainer}>
         <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-          <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
-            Tap here if your app doesn't automatically update after making changes
-          </Text>
+          {(starships.data && starships.data.length > 0) && starships.data.map((item) => (
+          <View style={styles.helpContainer}>
+            <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
+              {item.name}
+            </Text>
+            <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
+              {item.cost_in_credits}
+            </Text>
+            <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
+              {item.max_atmosphering_speed}
+            </Text>
+          </View>
+          ))}
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
 function handleHelpPress() {
   WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/get-started/create-a-new-app/#opening-the-app-on-your-phonetablet'
+    'https://swapi.dev/'
   );
 }
 
