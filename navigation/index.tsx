@@ -86,10 +86,10 @@ function BottomTabNavigator() {
         })}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name="Authentication"
         component={TabTwoScreen}
         options={{
-          title: 'Tab Two',
+          title: 'Authentication',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
