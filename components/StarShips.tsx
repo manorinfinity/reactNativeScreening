@@ -1,12 +1,11 @@
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, View, TextInput } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { startClock } from 'react-native-reanimated';
 import Colors from '../constants/Colors';
 import { MonoText } from './StyledText';
-import { Text, View, TextInput } from './Themed';
 
 export default function EditScreenInfo({ path }: { path: string }) {
   const[starships, setStarships] = useState({
@@ -31,13 +30,13 @@ export default function EditScreenInfo({ path }: { path: string }) {
   }
   const StarShipsList = starships.searchResults.map((item) => (
       <View style={styles.helpContainer}>
-        <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
+        <Text style={styles.helpLinkText} lightColor={Colors.dark.tint}>
           {item.name}
         </Text>
-        <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
+        <Text style={styles.helpLinkText} lightColor={Colors.dark.tint}>
           {item.cost_in_credits}
         </Text>
-        <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
+        <Text style={styles.helpLinkText} lightColor={Colors.dark.tint}>
           {item.max_atmosphering_speed}
         </Text>
       </View>
@@ -92,6 +91,8 @@ const styles = StyleSheet.create({
     width: "80%",
     padding: 10,
     borderColor: 'black',
+    color: 'white',
+    backgroundColor: "white",
     borderWidth: 2
   }
 });

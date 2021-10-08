@@ -19,6 +19,8 @@ import TabTwoScreen from '../screens/TabTwoScreen';
 import TabThreeScreen from '../screens/TabThreeScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
+import FadeInView  from '../FadeInView';
+import MyTabBar from './MyTabBar';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -62,57 +64,31 @@ function BottomTabNavigator() {
       initialRouteName="StarShips"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
-      }}>
+      }}
+      tabBar={(props) => <MyTabBar {...props}/>}
+      >
       <BottomTab.Screen
         name="StarShips"
         component={TabOneScreen}
         options={({ navigation }: RootTabScreenProps<'StarShips'>) => ({
-          title: 'StarShips',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Pressable
-              onPress={() => navigation.navigate('Modal')}
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}>
-              <FontAwesome
-                name="info-circle"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
-              />
-            </Pressable>
-          ),
+          title: '',
+          tabBarIcon: <TabBarIcon name="fighter-jet" color={"red"} />,
         })}
       />
       <BottomTab.Screen
         name="Authentication"
         component={TabTwoScreen}
         options={{
-          title: 'Authentication',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: '',
+          tabBarIcon: <TabBarIcon name="user" color={"red"} />,
         }}
       />
       <BottomTab.Screen
         name="OpenScreen"
         component={TabThreeScreen}
         options={({ navigation }: RootTabScreenProps<'OpenScreen'>) => ({
-          title: 'OpenScreen',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Pressable
-              onPress={() => navigation.navigate('Modal')}
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}>
-              <FontAwesome
-                name="info-circle"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
-              />
-            </Pressable>
-          ),
+          title: '',
+          tabBarIcon: <TabBarIcon name="rss" color={"red"} />,
         })}
       />
     </BottomTab.Navigator>

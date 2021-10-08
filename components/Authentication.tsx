@@ -10,7 +10,13 @@ import { Text, View } from './Themed';
 
 export default function Authentication({ path, handleLogin, handleLogout, authenticated }: { path: string }) {
   return (
-      <View style={styles.getStartedContainer}>
+      <View style={{
+          alignItems: 'center',
+          width: "100%",
+          paddingTop: "20%",
+          height: "100%", 
+          backgroundColor: (authenticated ? "green" : "white")
+        }}>
         {!authenticated && <Button
             onPress={handleLogin}
             title="Log In"
@@ -35,12 +41,6 @@ function handleHelpPress() {
 }
 
 const styles = StyleSheet.create({
-  getStartedContainer: {
-    alignItems: 'center',
-    width: "100%",
-    height: "100%",
-    backgroundColor: "green",
-  },
   button: {
     padding: "10%",
     width: "80%",

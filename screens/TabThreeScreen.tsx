@@ -1,16 +1,14 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
-
+import { StyleSheet, Animated, Text, View } from 'react-native';
+import { useRef } from 'react';
 import OpenScreen from '../components/OpenScreen';
-import { Text, View } from '../components/Themed';
-
+import FadeInView  from '../FadeInView';
 export default function TabThreeScreen() {
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Open Screen</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+    <FadeInView style={styles.container}>
       <OpenScreen path="/screens/TabTwoScreen.tsx" />
-    </View>
+    </FadeInView>
   );
 }
 
@@ -19,14 +17,5 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
   },
 });

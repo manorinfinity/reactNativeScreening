@@ -1,20 +1,18 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import Authentication from '../components/Authentication';
-import { Text, View } from '../components/Themed';
 import authContext from '../authContext';
+import FadeInView from '../FadeInView';
 
 export default function TabTwoScreen() {
   const { authenticated, setAuthenticated } = React.useContext(authContext);
   const handleLogin = () => setAuthenticated(true);
   const handleLogout = () => setAuthenticated(false);
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+    <FadeInView style={styles.container}>
       <Authentication path="/screens/TabTwoScreen.tsx" handleLogin={handleLogin} handleLogout={handleLogout} authenticated={authenticated}/>
-    </View>
+    </FadeInView>
   );
 }
 

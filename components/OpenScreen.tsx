@@ -1,17 +1,18 @@
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
-import { useEffect, useState } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, View, Text } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { startClock } from 'react-native-reanimated';
 import Colors from '../constants/Colors';
 import { MonoText } from './StyledText';
-import { Text, View } from './Themed';
 
 export default function OpenScreen({ path }: { path: string }) {
   const[starships, setStarships] = useState({
     data: [],
   });
+  // We can return the string with vowel count inside reduce itself but that will lead to 
+  // unnecessary looping for every string.
   const longestVowelString = (arr) => {
     let lgstr = arr.reduce((acc, item) => {
       if(item.length > acc.length){
@@ -21,6 +22,8 @@ export default function OpenScreen({ path }: { path: string }) {
     }, '');
     return `${lgstr} contains ${lgstr.split('').filter((item) => (/[aeiou]+/gi.test(item))).length} vowels`
   }
+
+  
   return (
       <View style={styles.getStartedContainer}>
         <Text>
