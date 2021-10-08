@@ -38,32 +38,11 @@ const styles = StyleSheet.create({
   getStartedContainer: {
     alignItems: 'center',
     width: "100%",
+    height: "100%",
+    backgroundColor: "green",
   },
   button: {
     padding: "10%",
     width: "80%",
-  },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
-  codeHighlightContainer: {
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    lineHeight: 24,
-    textAlign: 'center',
-  },
-  helpContainer: {
-    marginTop: 15,
-    marginHorizontal: 20,
-    alignItems: 'center',
-  },
-  helpLink: {
-    paddingVertical: 15,
-  },
-  helpLinkText: {
-    textAlign: 'center',
   },
 });

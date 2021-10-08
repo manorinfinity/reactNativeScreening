@@ -94,10 +94,10 @@ function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="TabThree"
+        name="OpenScreen"
         component={TabThreeScreen}
-        options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
-          title: 'Tab One',
+        options={({ navigation }: RootTabScreenProps<'OpenScreen'>) => ({
+          title: 'OpenScreen',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
           headerRight: () => (
             <Pressable
