@@ -21,11 +21,6 @@ export default function EditScreenInfo({ path }: { path: string }) {
   }, []);
   const handleSearch = (value) => {
     console.log(value);
-    // if(value === ""){
-    //   setStarships({...starships, searchResults: []});
-    // }else{
-      
-    // }
     setStarships({...starships, searchResults: starships.data.filter((item) => item.name.toLowerCase().includes(value.toLowerCase()) && value !== "")});
   }
   const StarShipsList = starships.searchResults.map((item) => (
@@ -43,12 +38,17 @@ export default function EditScreenInfo({ path }: { path: string }) {
     ));
   return (
       <View style={styles.helpContainer}>
-        <TextInput style={styles.textInput} onChangeText={handleSearch}/>
-        <ScrollView style={styles.mainContainer}>
-          <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-            {(starships.data && starships.data.length > 0) && StarShipsList}
-          </TouchableOpacity>
-        </ScrollView>
+        {(!starships.data || !(starships.data.length > 0)) && <Text style={styles.loader}>Loading...</Text>}
+        {(starships.data && starships.data.length > 0) && (
+          <View style={styles.helpContainer}>
+            <TextInput style={styles.textInput} onChangeText={handleSearch}/>
+            <ScrollView style={styles.mainContainer}>
+              <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
+                {(starships.searchResults && starships.searchResults.length > 0) && StarShipsList}
+              </TouchableOpacity>
+            </ScrollView>
+          </View>
+        )}
       </View>
   );
 }
@@ -66,6 +66,10 @@ const styles = StyleSheet.create({
   codeHighlightContainer: {
     borderRadius: 3,
     paddingHorizontal: 4,
+  },
+  loader: {
+    fontSize: 20,
+    textAlign: 'center',
   },
   getStartedText: {
     fontSize: 17,
@@ -91,8 +95,7 @@ const styles = StyleSheet.create({
     width: "80%",
     padding: 10,
     borderColor: 'black',
-    color: 'white',
-    backgroundColor: "white",
+    color: 'black',
     borderWidth: 2
   }
 });

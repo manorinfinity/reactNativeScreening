@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
 
-import EditScreenInfo from '../components/OpenScreen';
 import StarShips from '../components/StarShips';
 import { Text, View } from 'react-native';
 import FadeInView from '../FadeInView';
